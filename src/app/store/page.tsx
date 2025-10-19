@@ -38,7 +38,7 @@ function Store() {
   return (
     <Container>
       
-      <h1 className="text-right text-2xl font-semibold py-4">فروشگاه</h1>
+      <h1 className="text-right text-white text-2xl font-semibold py-4">فروشگاه</h1>
       <div className="grid grid-cols-4 gap-4">
         {data.map((item) => (
           <Link href={`/store/${item.id}`}       key={item.id}>
