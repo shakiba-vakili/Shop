@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="bg-gray-900 min-h-screen flex items-center">
+    <div className="bg-gray-900 min-h-screen flex items-center bg-gradient-to-b from-gray-900 via-purple-900 to-black">
+
       <Container>
         <div className="text-right rtl py-20">
           <h1 className="text-4xl font-bold text-white mb-4">
@@ -16,7 +17,7 @@ export default function Home() {
 
           <Link
             href="/store"
-            className="inline-block bg-sky-500 text-white px-6 py-3 rounded-xl hover:bg-sky-600 transition-colors duration-300"
+            className="inline-block bg-purple-700 text-white px-6 py-3 rounded-xl hover:bg-purple-600 transition-colors duration-300"
           >
             مشاهده فروشگاه
           </Link>
