@@ -1,18 +1,28 @@
-import Container from '@/components/Container'
-import React from 'react'
+import React from "react";
+import Container from "@/components/Container";
+import { IProductItemProps } from "@/components/Productitem";
 
-function Product() {
+interface IProductProps {
+  params: { id: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+async function Product({ params }: IProductProps) {
+  const { id } = params;
+
+  const result = await fetch(`http://localhost:3004/products/${id}`)
+
+
+  const data = (await result.json()) as IProductItemProps;
+
   return (
     <Container>
       <div className="grid grid-cols-12 mt-8 shadow-lg rounded-xl overflow-hidden bg-gradient-to-b from-gray-800 via-purple-900 to-black text-white">
-        
         <div className="col-span-9 rtl text-right p-6">
-          <h2 className="font-bold text-2xl mb-2">محصول 1</h2>
-          <p className="text-gray-300 mb-4">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit nisi aliquid architecto unde, cupiditate maiores adipisci similique dolorum placeat vitae numquam earum corrupti nostrum ut corporis quas quis dolore? Autem.
-          </p>
+          <h2 className="font-bold text-2xl mb-2">{data.title}</h2>
+          <p className="text-gray-300 mb-4">{data.description}</p>
           <p className="font-bold mb-4">
-            قیمت: <span className="text-purple-400">20$</span>
+            قیمت: <span className="text-purple-400">{data.price}$</span>
           </p>
 
           <div className="flex items-center mt-4">
@@ -28,15 +38,14 @@ function Product() {
 
         <div className="col-span-3">
           <img
-            src="https://static.vecteezy.com/ti/photos-gratuite/t2/27001092-ensemble-de-jaune-fleurs-tournesols-avec-feuilles-botanique-image-floral-conception-pour-numerique-contenu-photo.jpg"
-            alt="محصول 1"
+            src={data.img}
+            alt={data.title}
             className="w-full h-full object-cover"
           />
         </div>
-
       </div>
     </Container>
-  )
+  );
 }
 
 export default Product
