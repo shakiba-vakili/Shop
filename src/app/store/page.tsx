@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
 import Productitem from '@/components/Productitem'
+import Link from 'next/link'
 import React from 'react'
 
 function Store() {
@@ -40,10 +41,11 @@ function Store() {
       <h1 className="text-right text-2xl font-semibold py-4">فروشگاه</h1>
       <div className="grid grid-cols-4 gap-4">
         {data.map((item) => (
+          <Link href={`/store/${item.id}`}       key={item.id}>
           <Productitem
-            key={item.id}
             {...item}
-          />
+            />
+            </Link>
         ))}
       </div>
     </Container>
